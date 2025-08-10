@@ -2,8 +2,8 @@
 This AGENT.md provides clear instructions for OpenAI Codex and similar AI agents when working in this repository. It defines conventions, structure, and commands so that generated code aligns with the project’s norms.
 
 ## Scope
-Technology stack: the project uses HTML5, Bootstrap 5 (always favour utilities and pre‑built components), and vanilla JavaScript organised as ES modules.
-Data storage: prefer client‑side storage for state and persistence. Use IndexedDB for structured data (e.g. maps, saved states) and localStorage for small preference values. Avoid adding a server or remote storage unless specifically directed.
+- Technology stack: the project uses HTML5, Bootstrap 5 (always favour utilities and pre‑built components), and vanilla JavaScript organised as ES modules.
+- Data storage: prefer client‑side storage for state and persistence. Use IndexedDB for structured data (e.g. maps, images, uploads, saved states) and localStorage for small preference values. Avoid adding a server or remote storage unless specifically directed.
 
 ## Core Principles
 - Reuse patterns: adhere to existing component and utility patterns; avoid reinventing solutions.
