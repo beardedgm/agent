@@ -5,13 +5,13 @@ This AGENT.md provides clear instructions for OpenAI Codex and similar AI agents
 Technology stack: the project uses HTML5, Bootstrap 5 (always favour utilities and pre‑built components), and vanilla JavaScript organised as ES modules.
 Data storage: prefer client‑side storage for state and persistence. Use IndexedDB for structured data (e.g. maps, saved states) and localStorage for small preference values. Avoid adding a server or remote storage unless specifically directed.
 
-#Core Principles
--Reuse patterns: adhere to existing component and utility patterns; avoid reinventing solutions.
--Keep changes focused: one feature or bug fix per pull request. Do not bundle unrelated changes.
--Simplicity over cleverness: prioritise readable, straightforward code over obscure optimisations.
--Modular files: aim for files ≤ 300 lines. If a module grows larger, split it into smaller ES modules organised by feature.
--No inline scripts or styles: keep JavaScript in .js modules and CSS in stylesheets; follow Content‑Security‑Policy best practices.
--Environment boundaries: respect environment separation. Never modify .env or other secrets without approval.
+# Core Principles
+- Reuse patterns: adhere to existing component and utility patterns; avoid reinventing solutions.
+- Keep changes focused: one feature or bug fix per pull request. Do not bundle unrelated changes.
+- Simplicity over cleverness: prioritise readable, straightforward code over obscure optimisations.
+- Modular files: aim for files ≤ 300 lines. If a module grows larger, split it into smaller ES modules organised by feature.
+- No inline scripts or styles: keep JavaScript in .js modules and CSS in stylesheets; follow Content‑Security‑Policy best practices.
+- Environment boundaries: respect environment separation. Never modify .env or other secrets without approval.
 
 #Code Style
 -Indentation: use 2‑space indents, UTF‑8 encoding with LF line endings.
