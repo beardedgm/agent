@@ -1,121 +1,76 @@
-# AGENT.md — Repo Rules (HTML • Bootstrap 5 • Vanilla JS)
+# AGENT.md — Condensed AI Rules (HTML • Bootstrap 5 • Vanilla JS)
 
-**Purpose**
-Keep this codebase simple, consistent, accessible, and secure. These rules guide any AI/code assistant working here.
+**Scope:** Only modify `/assets`, `/components`, `/tests`. Never change `/public` or configs without instruction.  
+**Stack:** HTML5, Bootstrap 5 (utilities/components first), Vanilla JS (ES modules).  
 
-**Tech Stack**
+## Core Rules
+- Reuse existing patterns; avoid duplication.
+- Small, focused changes only.
+- Prioritize simplicity/readability over cleverness.
+- Keep files ≤300 lines; split into modules if larger.
+- No inline JS/CSS; CSP-friendly.
+- Respect env separation; no `.env` edits without approval.
 
-* HTML5
-* Bootstrap 5 (utilities/components first)
-* Vanilla JavaScript (ES modules)
+## Style
+- Indent 2 spaces, UTF-8 LF.
+- JS: semicolons, `const`/`let` (no `var`), ES modules.
+- Names: kebab-case (files/classes), camelCase (JS vars).
+- Max line length ~100–120 chars.
 
----
+## HTML
+- Use semantic tags; label all inputs.
+- Scripts: `<script type="module" src="..." defer></script>`.
 
-## Core Operating Rules
+## CSS / Bootstrap
+- Order: 1) Utilities, 2) Components, 3) Scoped custom CSS.
+- Avoid deep selectors/`!important`.
+- Use CSS vars for theme tokens.
 
-1. **Iterate, don’t reinvent.** Reuse existing patterns before adding new ones.
-2. **Small, focused changes.** Touch only code related to the task.
-3. **Prefer simplicity & readability** over cleverness or premature optimization.
-4. **No duplication.** Search before adding similar logic.
-5. **Keep files small.** Target ≤300 lines; split into modules/components when larger.
-6. **No inline JS/CSS.** Keep CSP-friendly by using external modules/styles.
-7. **Respect environments.** Don’t leak test data into dev/prod; never change `.env` without explicit instruction.
-
-## Formatting & Style
-
-* Indentation: **2 spaces**; no tabs.
-* Encoding/Endings: **UTF‑8**, **LF**.
-* JS: **semicolons**, `const`/`let` (no `var`), **ES modules** only.
-* Naming: `kebab-case` files & CSS classes; `camelCase` for JS identifiers.
-* Max line length: \~100–120 chars.
-
-## Project Layout
-
-```
-/assets/
-  css/     # minimal, scoped custom CSS
-  js/      # ES modules — one feature per file
-  img/
-  icons/
-/components/  # reusable HTML snippets/partials
-/tests/       # unit + lightweight DOM tests
-```
-
-## HTML Rules
-
-* Use semantic landmarks (`header`, `nav`, `main`, `footer`).
-* Label form controls; associate errors/help text with inputs.
-* Load scripts as modules with `defer`:
-
-  ```html
-  <script type="module" src="/assets/js/app.js" defer></script>
-  ```
-
-## CSS / Bootstrap Rules
-
-* **Bootstrap utilities/components first.**
-* Keep custom CSS minimal & **scoped by a root class** (e.g., `.navbar-search { … }`).
-* Avoid deep selectors and `!important`.
-* Prefer CSS custom properties for theme tokens.
-
-## JavaScript Rules
-
-* One feature = one module; export named functions.
-* Use `data-*` attributes for DOM hooks (avoid brittle class hooks).
-* Prefer event delegation for dynamic content.
-* Guard against null/undefined; no globals; no `eval`/Function constructors.
-* Isolate DOM effects; keep logic pure where possible.
-* Use `AbortController` to cancel fetches and listeners when appropriate.
+## JavaScript
+- One feature = one module; export named funcs.
+- Use `data-*` for DOM hooks; prefer event delegation.
+- Null-check; no globals, `eval`, or Function().
+- Keep logic pure; isolate DOM effects.
+- Use `AbortController` when cancelable.
 
 ## Accessibility (WCAG 2.1 AA)
-
-* Contrast ≥ 4.5:1; keep visible focus outlines.
-* Full keyboard support for all interactive UI.
-* Provide `alt` text; use `aria-*` only when semantics aren’t enough.
-* Use `aria-live` for async status/validation messages.
+- Contrast ≥ 4.5:1; visible focus outlines.
+- Full keyboard support.
+- Provide `alt`; use `aria-*` only when needed.
+- `aria-live` for async updates.
 
 ## Performance
-
-* Keep **critical path < 200 KB** (HTML+CSS+JS) on first load.
-* Use CDN for Bootstrap; lazy‑load non‑critical JS (`import()` when sensible).
-* Optimize/resize images; prefer modern formats (with fallbacks as needed).
+- Critical path < 200 KB.
+- Use CDN Bootstrap; lazy-load non-critical JS.
+- Optimize/resize images; prefer modern formats.
 
 ## Security
-
-* CSP-friendly (no inline code/styles).
-* Sanitize/encode any user-provided content before rendering.
-* Keep third‑party scripts to a minimum; pin versions.
+- CSP-friendly; sanitize user content.
+- Minimize third-party scripts; pin versions.
 
 ## Dependencies
-
-* Avoid jQuery/heavy frameworks. Prefer zero‑dep or small, audited libs.
-* Document any new dependency (purpose, size, license) in the PR/commit.
+- Avoid jQuery/heavy libs; prefer small, audited deps.
+- Document new deps (purpose, size, license).
 
 ## Testing
+- Unit tests for utilities; DOM tests for key flows.
+- Tests own mocks; no test code in app files.
 
-* Provide unit tests for utilities and key logic.
-* Add lightweight DOM interaction tests for critical flows.
-* Tests own all mocks; no test artifacts in app code.
+## Workflow
+- PRs: single-purpose, small, with before/after notes.
+- All tests must pass pre-merge.
 
-## Workflow & PRs
+## Server Lifecycle
+- Stop any running dev server before starting new.
+- Include start/stop commands in PR when relevant.
 
-* Keep PRs single‑purpose and small.
-* Include before/after notes or screenshots for UI changes.
-* Ensure all tests pass before merge.
+## Checklist (per change)
+[ ] Reused pattern.  
+[ ] Focused edits.  
+[ ] Style/naming rules followed.  
+[ ] Tests added/updated.  
+[ ] Accessibility/security preserved.  
+[ ] Performance impact minimal.  
+[ ] Run/test instructions provided.  
 
-## Local Server Lifecycle
-
-* Stop any running dev server before starting a new one.
-* Provide exact start/stop commands in the PR/notes when relevant.
-
----
-
-**Checklist (per change)**
-
-* [ ] Reused an existing pattern where possible.
-* [ ] Kept edits focused; no unrelated refactors.
-* [ ] Followed formatting/naming and file-size guidance.
-* [ ] Added/updated tests (including edge cases).
-* [ ] Preserved accessibility & security rules.
-* [ ] Verified performance impact is minimal.
-* [ ] Provided clear run/test instructions if needed.
+**Self-Check:** ✅ if met, ❌ if not. ≤1 ❌ allowed per PR.
