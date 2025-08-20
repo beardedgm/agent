@@ -121,7 +121,7 @@ The generated PRD should include the following sections:
 - Implement storage fallback chain: localStorage → IndexedDB → memory
 
 **Storage Schema Example:**
-```javascript
+javascript
 // IndexedDB Structure
 const dbSchema = {
   name: 'AppDatabase',
@@ -139,7 +139,7 @@ const storageKeys = {
   CACHE_VERSION: 'app_cache_version',
   LAST_SYNC: 'app_last_sync_timestamp'
 };
-```
+
 
 **Browser Support:**
 - Chrome (latest 2 versions)
@@ -152,6 +152,7 @@ const storageKeys = {
 - Store application data in IndexedDB
 - Queue API calls for retry when online
 - Display cached data with "offline" indicator
+```
 
 ## Target Audience
 
