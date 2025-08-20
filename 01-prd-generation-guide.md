@@ -121,6 +121,7 @@ The generated PRD should include the following sections:
 - Implement storage fallback chain: localStorage → IndexedDB → memory
 
 **Storage Schema Example:**
+'
 javascript
 // IndexedDB Structure
 const dbSchema = {
@@ -139,7 +140,7 @@ const storageKeys = {
   CACHE_VERSION: 'app_cache_version',
   LAST_SYNC: 'app_last_sync_timestamp'
 };
-
+'
 
 **Browser Support:**
 - Chrome (latest 2 versions)
@@ -152,7 +153,7 @@ const storageKeys = {
 - Store application data in IndexedDB
 - Queue API calls for retry when online
 - Display cached data with "offline" indicator
-```
+
 
 ## Target Audience
 
@@ -163,7 +164,7 @@ Assume the primary reader of the PRD is a **junior developer** familiar with HTM
 *   **Format:** Markdown (`.md`)
 *   **Location:** `/tasks/`
 *   **Filename:** `prd-[feature-name].md`
-
+```
 ## Final Instructions
 
 1. Do NOT start implementing the PRD
