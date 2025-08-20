@@ -152,7 +152,6 @@ const storageKeys = {
 - Store application data in IndexedDB
 - Queue API calls for retry when online
 - Display cached data with "offline" indicator
-```
 
 ## Target Audience
 
